@@ -6,7 +6,7 @@ import displayINRCurrency from '../helpers/displayCurrency';
 export const AdminCartProduct = ({data,fetchAllProduct}) => {
   const [editProduct,setEditProduct] = useState(false)
   return (
-    <div className='p-4 rounded border-black border flex flex-col'>
+    <div className='p-4 bg-white rounded shadow-lg flex flex-col'>
         <div className='w-48'>
           <div className='w-48 h-36 mx-auto flex justify-center items-center'>
             <img className='bg-white object-contain h-full rounded' src={data?.productImage[0]}/>

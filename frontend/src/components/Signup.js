@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import loginIcon from '../assest/signin.gif'
+import loginIcon from '../assest/loginIcon.png'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import imageTobase64 from '../helpers/imageTobase64';
 import SummaryApi from '../common';
 import { toast } from 'react-toastify';
-
+import registerImage from '../assest/register.jpg'
+import { uploadImage } from '../helpers/uploadImage';
 export const Signup = () => {
     const Navigate = useNavigate();
         const [showPassword,setshowPassword] =useState(true);
@@ -27,10 +28,22 @@ export const Signup = () => {
         }
         async function uploadHandler(e){
             const file=e.target.files[0];
-            const profilepicurl =await imageTobase64(file)
+
+            const uploadImageCloudinary = await uploadImage(file)
+            // setData((prev)=>{
+            //     return{
+            //         ...prev,
+            //         productImage: [...prev.productImage ,uploadImageCloudinary?.url]
+            //     }
+            // })
+            console.log("upload image " , uploadImageCloudinary)
+                  
+
+            // const profilepicurl =await imageTobase64(file)
             setData((prev)=>{
                 return{
-                    ...prev,profilePic:profilepicurl
+                    ...prev,
+                    profilePic:uploadImageCloudinary?.url
                 }
             })
             console.log(file)
@@ -64,25 +77,29 @@ export const Signup = () => {
         }
         console.log(data);
   return (
-    <section id='signup' className='flex items-center h-[100%] justify-center'>
-            <div className='bg-gray-100 w-full max-w-lg flex flex-col py-6 rounded-2xl'>
-                <div className='h-20 w-24 my-9 mx-auto relative'>
-                    <div>
-                        <label>
-                            <div className='bg-slate-100 shadow-lg text-center text-[13px] absolute -bottom-10 right-[6px] py-1 opacity-60 hover:opacity-90 cursor-pointer transition-all rounded-full'>
-                                Upload Image
+    <section id='signup' 
+    className="relative flex items-center justify-end min-h-screen bg-cover bg-center"
+        style={{ backgroundImage: `url(${registerImage})` }}>
+            <div className='bg-transparent w-full max-w-lg flex flex-col py-6 rounded-2xl border-[1px] border-black mr-12'>
+                <div className='h-fit mx-auto relative'>
+
+                    <div className='my-2'>
+                        <label className=' flex items-center justify-center flex-col'>
+                            <img className={`${!data?.profilePic ? 'animate-bounce h-44 w-44' : 'h-32 w-32' } rounded-full object-cover`} src={data.profilePic || loginIcon} />
+
+                            <div className='bg-slate-50 p-1 shadow-lg text-center text-[13px] opacity-60 hover:opacity-90 cursor-pointer transition-all rounded-full'>
+                                {data?.profilePic ? ("Update Image") : ("Upload Image")}
                             </div>
                             <input type='file' className='hidden' onChange={(e)=>uploadHandler(e)}/>
                         </label>
-                    <img className='rounded-full' src={data.profilePic || loginIcon}/>
                     </div>
                     
                 </div>
-                <form className='grid px-10 gap-2' onSubmit={(event)=>submitHandler(event)}>
+                <form className='grid px-10 gap-2 text-lg' onSubmit={(event)=>submitHandler(event)}>
                     <div>
                         <label htmlFor='name'>Name:</label>
                         <div className='flex border-2 px-4 py-2 border-gray-500'>
-                            <input className='w-full h-full bg-transparent outline-none ' 
+                            <input className='w-full h-full bg-transparent outline-none placeholder:text-slate-600' 
                             type='text' 
                             name='name' 
                             value={data.name}
@@ -95,7 +112,7 @@ export const Signup = () => {
                     <div>
                         <label htmlFor='email'>Email:</label>
                         <div className='flex border-2 px-4 py-2 border-gray-500'>
-                            <input className='w-full h-full bg-transparent outline-none ' 
+                            <input className='w-full h-full bg-transparent outline-none placeholder:text-slate-600' 
                             type='email' 
                             name='email' 
                             value={data.email}
@@ -108,7 +125,7 @@ export const Signup = () => {
                     <div>
                         <label htmlFor='password'>Password:</label>
                         <div className='flex border-2 px-4 py-2 border-gray-500'>
-                            <input className='w-full h-full bg-transparent outline-none' 
+                            <input className='w-full h-full bg-transparent outline-none placeholder:text-slate-600' 
                                 type={showPassword?"text":"password"} 
                                 name='password' 
                                 value={data.password}
@@ -126,7 +143,7 @@ export const Signup = () => {
                     <div>
                         <label htmlFor='confirmPassword'>Confirm Password:</label>
                         <div className='flex border-2 px-4 py-2 border-gray-500'>
-                            <input className='w-full h-full bg-transparent outline-none' 
+                            <input className='w-full h-full bg-transparent outline-none placeholder:text-slate-600' 
                                 type={showConfirmPassword?"text":"password"} 
                                 name='confirmPassword' 
                                 value={data.confirmPassword}
@@ -141,9 +158,9 @@ export const Signup = () => {
                         </div>
                     </div>
                     
-                    <button className='px-4 py-2 rounded-xl bg-blue-500 hover:bg-blue-700 transition-all duration-100 text-lg text-bold'>SignUp</button>
+                    <button className='px-4 py-2 rounded-xl bg-red-400 hover:bg-red-500 transition-all duration-100 text-lg text-bold'>SignUp</button>
                 </form>
-                <p className='text-sm px-10'>Already have account ? <Link to="/login" className='hover:underline text-blue-500 hover:text-blue-800'>Login</Link></p>
+                <p className='text-sm px-10'>Already have account ? <Link to="/login" className='hover:underline text-red-500 hover:text-red-600'>Login</Link></p>
             </div>
     </section>
   )

@@ -6,7 +6,7 @@ import { MdDelete } from "react-icons/md";
 import displayINRCurrency from '../helpers/displayCurrency'
 import { toast } from 'react-toastify'
 import {loadStripe} from '@stripe/stripe-js'
-
+import noItemsFound from '../assest/no-items-found.webp'
 
 const Cart = () => {
   const [data,setData] = useState([])
@@ -15,7 +15,7 @@ const Cart = () => {
   const loadingCart = new Array (context.countTotalCartProducts).fill(null)
   const fetchCartData = async()=>{
     try{
-      setLoading(true)
+      
       const apiresponse = await fetch(SummaryApi.addToCartProductView.url,{
         method:SummaryApi.addToCartProductView.method,
         credentials: `include`,
@@ -23,7 +23,7 @@ const Cart = () => {
           "content-type":"application/json",
         }
       })
-      setLoading(false)
+      
       const apidata = await apiresponse.json()
       
       if(apidata.success){
@@ -35,7 +35,13 @@ const Cart = () => {
     }
   }
   useEffect(()=>{
-    fetchCartData()
+    const fetchCart = async()=>{
+      setLoading(true)
+      await fetchCartData()
+      setLoading(false)
+    }
+    fetchCart()
+    
   },[])
   const changeQty = async(id,qty,sign)=> {
     const quantity = sign==="plus"? (qty+1) : (qty-1)
@@ -119,11 +125,11 @@ const Cart = () => {
   console.log("totalQty",totalValue)
   return (
     <div className="container mx-auto">
-      <div className={`${data?.length ? 'h-full' : 'h-[100vh]'}`}>
+      <div className={`${data?.length ? 'h-full' : 'h-[calc(100vh-115px)]'}`}>
         {
           data.length === 0 && !loading && (
             <div className='flex items-center justify-center flex-col h-full'>
-            <img className='' src='https://cdn0.iconfinder.com/data/icons/buno-shopping-bag/32/shopping_bag_sad_unhappy_purchase-1024.png' height={200} width={200}/>
+            <img className='' src={noItemsFound} height={200} width={200}/>
             <p className="font-bold text-2xl py-2">No Data</p>
             </div>
           )

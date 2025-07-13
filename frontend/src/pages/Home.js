@@ -9,10 +9,14 @@ export const Home = () => {
     <div>
       <CategoryList/>
       <BannerProduct/>
-      <HorizontalCardProduct category={"airpods"} heading={"Top's airpods"}/>
-      <HorizontalCardProduct category={"airpods"} heading={"Trending Cameras"}/>
-      <VerticalCardProduct category={"airpods"} heading={"Top's airpods"}/>
-      <VerticalCardProduct category={"camera"} heading={"Photo"}/>
+      <HorizontalCardProduct category={"mobiles"} heading={"Best Deals on Smartphone"}/>
+      <HorizontalCardProduct category={"airpods"} heading={"Airpods Top Deals"}/>
+      <VerticalCardProduct category={"trimmers"} heading={"Bestselling Trimmers"}/>
+      <VerticalCardProduct category={"camera"} heading={"Trending Cameras"}/>
+
+      {/* <VerticalCardProduct category={"airpods"} heading={"Top's airpods"}/> */}
+
+      {/* <VerticalCardProduct category={"camera"} heading={"Photo"}/> */}
 
     </div>
   )

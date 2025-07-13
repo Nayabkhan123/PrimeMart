@@ -75,8 +75,8 @@ export const UploadProduct = ({onclose,fetchAllProduct}) => {
         console.log("data",data)
     }
   return (
-    <div className='fixed h-full w-full top-0 bottom-0 right-0 left-0 flex justify-center items-center bg-opacity-45 bg-slate-200 '>
-        <div className='overflow-y-hidden bg-white p-4 rounded w-full max-w-2xl h-full max-h-[80%] shadow-lg'>
+    <div className='fixed h-full w-full top-0 bottom-0 right-0 left-0 flex justify-center items-center bg-opacity-45 bg-slate-200' onClick={onclose}>
+        <div className='overflow-y-hidden bg-white p-4 rounded w-full max-w-2xl h-full max-h-[80%] shadow-lg' onClick={(e)=>e.stopPropagation()}>
             <div className='flex pb-4 justify-between items-center w-full'>
                 <h2 className='font-bold text-lg '>Upload Product</h2>
                 <div className='text-lg hover:scale-125 transition-all duration-100 cursor-pointer' onClick={onclose}>

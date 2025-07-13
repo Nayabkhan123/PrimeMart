@@ -1,10 +1,11 @@
 import React, { useContext, useState } from 'react'
-import loginIcon from '../assest/signin.gif'
+import loginIcon from '../assest/loginIcon.png'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom';
 import SummaryApi from '../common';
 import { toast } from 'react-toastify';
 import Context from '../context';
+import loginImage from '../assest/login.jpg'
 export const Login = () => {
     const Navigate=useNavigate()
     const {fetchUserDetails,fetchUserAddToCart} = useContext(Context)
@@ -52,17 +53,20 @@ export const Login = () => {
     }
     console.log(data);
   return (
-    <section id='login' className='flex items-center h-[100%] justify-center'>
-            <div className='bg-gray-100 w-full max-w-lg flex flex-col py-6 rounded-2xl'>
-                <div className='h-20 w-20 my-6 mx-auto'>
-                    <img className='rounded-full' src={loginIcon}/>
+    <section id='login' 
+    className="relative flex items-center min-h-screen bg-cover bg-center"
+    style={{ backgroundImage: `url(${loginImage})` }}>
+            <div className='bg-transparent ml-12 border-black border-[1px] py-12 w-full max-w-lg flex flex-col rounded-2xl'>
+                <div className='animate-bounce mx-auto'>
+                    <img className='rounded-full' src={loginIcon} width={150}/>
                 </div>
-                <form className='grid px-10 gap-2' onSubmit={(event)=>submitHandler(event)}>
+                <form className='grid px-10 gap-2 text-lg' onSubmit={(event)=>submitHandler(event)}>
                     <div>
                         <label htmlFor='email'>Email:</label>
                         <div className='flex border-2 px-4 py-2 border-gray-500'>
-                            <input className='w-full h-full bg-transparent outline-none ' 
+                            <input className='w-full h-full bg-transparent outline-none placeholder:text-slate-600' 
                             type='email' 
+                            autoComplete='off'
                             name='email' 
                             value={data.email}
                             placeholder='Enter Your Email'
@@ -73,8 +77,9 @@ export const Login = () => {
                     <div>
                         <label htmlFor='password'>Password:</label>
                         <div className='flex border-2 px-4 py-2 border-gray-500'>
-                            <input className='w-full h-full bg-transparent outline-none' 
+                            <input className='w-full h-full bg-transparent outline-none placeholder:text-slate-600' 
                                 type={showpassword?"text":"password"} 
+                                autoComplete='off'
                                 name='password' 
                                 value={data.password}
                                 placeholder='Enter Your Password'
@@ -85,12 +90,12 @@ export const Login = () => {
                                 }
                                 </span>
                         </div>
-                        <Link className='flex flex-row-reverse hover:underline hover:text-blue-700 text-sm' to="/forgot-password">Forgot Password</Link>
+                        <Link className='flex flex-row-reverse hover:underline hover:text-blue-600 text-sm' to="/forgot-password">Forgot Password</Link>
                     </div>
                     
-                    <button className='px-4 py-2 rounded-xl bg-blue-500 hover:bg-blue-700 transition-all duration-100 text-lg text-bold'>Login</button>
+                    <button className='px-4 py-2 rounded-xl bg-blue-500 hover:bg-blue-600 transition-all duration-100 text-lg text-bold'>Login</button>
                 </form>
-                <p className='text-sm px-10'>Dont't have account ? <Link to="/sign-up" className='hover:underline text-blue-500 hover:text-blue-800'>SignUp</Link></p>
+                <p className='text-sm px-10'>Dont't have account ? <Link to="/sign-up" className='hover:underline text-blue-600 hover:text-blue-700'>SignUp</Link></p>
             </div>
     </section>
   )

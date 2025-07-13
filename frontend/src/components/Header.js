@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react'
 import logo from '../assest/Logo.png'
+import logo2 from '../assest/logo2.png'
+
 import {HiOutlineSearch} from 'react-icons/hi'
 import {BsCart3} from 'react-icons/bs'
 import {FaUserAstronaut} from 'react-icons/fa'
@@ -28,6 +30,7 @@ export const Header = () => {
     if(apidata.success){
       toast.success(apidata.message)
       dispatch(setuserDetails(null))
+      navigate("/")
     }
     if(apidata.error){
       toast.error(apidata.message)
@@ -44,13 +47,12 @@ export const Header = () => {
     }
   }
   return (
-    
-    <header className='flex items-center justify-around w-full mx-auto h-16 shadow-md fixed top-0 z-50 bg-white'>
+    <header className='flex items-center justify-around w-full mx-auto h-16 shadow-md fixed top-0 z-50 bg-white' >
       <div className='flex items-center'>
-        <Link to="/">
-          <img src={logo} height={10} width={60}/>
+        <Link className='flex items-center h-12' to="/">
+          <img src={logo} className='h-12'/>
+          <img src={logo2} className='h-10'/>
         </Link>
-        <p className='font-bold text-2xl text-blue-800'>PrimeMart</p>
       </div>
       <div className='hidden lg:flex focus-within:shadow-md rounded-full'>
         <input onChange={(e)=>handleSearch(e)} value={searchValue} className='px-6 py-2 outline-none border-2 rounded-l-full lg:w-[350px]' type='text' placeholder='Search product here...'/>
@@ -93,7 +95,7 @@ export const Header = () => {
                 <Link to='/admin-panel/all-products' className='hidden md:flex whitespace-nowrap px-2 py-4 hover:bg-slate-100 bg-slate-50' onClick={()=>setmenu(prev=>!prev)}>Admin Panel</Link>
 
               }
-              <Link to={'/order'} className='hidden md:flex whitespace-nowrap px-2 py-4 hover:bg-slate-100 bg-slate-50' onClick={()=>setmenu(prev=>!prev)}>Order</Link>
+              <Link to={'/order'} className='flex whitespace-nowrap px-2 py-4 hover:bg-slate-100 bg-slate-50' onClick={()=>setmenu(prev=>!prev)}>Order</Link>
             </nav>
             </div>)
           }

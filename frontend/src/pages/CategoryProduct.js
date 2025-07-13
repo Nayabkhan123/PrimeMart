@@ -4,6 +4,7 @@ import productCategories from '../helpers/productCategories'
 import CategoryWiseProductDisplay from '../components/CategoryWiseProductDisplay'
 import SummaryApi from '../common'
 import VerticalProduct from '../components/VerticalProduct'
+import { IoReorderThree } from "react-icons/io5";
 
 const CategoryProduct = () => {
     const params = useParams()
@@ -90,53 +91,58 @@ const CategoryProduct = () => {
     useEffect(()=>{
 
     },[sortby])
+    const [filterOption,setFilterOption] = useState(true)
   return (
-    <div className='container mx-auto p-4'>
+    <div className='w-[100vw] md:w-[90%] mx-auto p-4'>
       {/* desktop version */}
-      <div className='hidden lg:grid grid-cols-[200px,1fr] '>
+      <IoReorderThree size={30} onClick={()=>setFilterOption(!filterOption)} className=' cursor-pointer'/>
+      <div className='flex w-full'>
+        
         {/* left side  */}
-        <div className='bg-white p-2 min-h-[calc(100vh-150px)] overflow-y-scroll '>
-          {/* sort by  */}
-          <div className='text-lg'>
-            <h3 className='text-base uppercase font-medium text-slate-500 border-b pb-1 border-slate-300'>Sort by</h3>
-            <form className=' text-sm flex gap-2 flex-col py-2'>
-              <div className='flex items-center gap-3'>
-                <input type='radio' name='sort' checked={sortby === 'asc'} value="asc" onChange={(e)=>handleChangeSortby(e)}/>
-                <label htmlFor=''>Price - Low to High</label>
-              </div>
-              <div className='flex items-center gap-3'>
-                <input type='radio' name='sort' checked={sortby === 'dsc'} value={"dsc"} onChange={(e)=>handleChangeSortby(e)}/>
-                <label>Price - High to Low</label>
-              </div>
-            </form>
+        { filterOption &&
+          <div className='bg-white min-h-[calc(100vh-150px)] overflow-y-auto w-[200px] md:w-[300px] p-4 '>
+            {/* sort by  */}
+            <div className='text-lg'>
+              <h3 className='text-base uppercase font-medium text-slate-500 border-b pb-1 border-slate-300'>Sort by</h3>
+              <form className='text-sm md:text-md flex gap-2 flex-col py-2'>
+                <div className='flex items-center gap-3'>
+                  <input type='radio' name='sort' checked={sortby === 'asc'} value="asc" onChange={(e)=>handleChangeSortby(e)}/>
+                  <label htmlFor=''>Price - Low to High</label>
+                </div>
+                <div className='flex items-center gap-3'>
+                  <input type='radio' name='sort' checked={sortby === 'dsc'} value={"dsc"} onChange={(e)=>handleChangeSortby(e)}/>
+                  <label>Price - High to Low</label>
+                </div>
+              </form>
+            </div>
+            {/* filter by  */}
+            <div className='text-lg'>
+              <h3 className='text-base uppercase font-medium text-slate-500 border-b pb-1 border-slate-300'>Category</h3>
+              <form className=' text-sm flex gap-2 flex-col py-2'>
+                {
+                  productCategories?.map((categoryName,index)=>{
+                    return (
+                      <div className='flex items-center gap-3'>
+                        <input type='checkbox' 
+                              name={"category"} 
+                              checked={selectCategory[categoryName?.value]}
+                              id={categoryName?.value}
+                              value={categoryName?.value}
+                              onChange={(e)=>handleSelectCategory(e)}
+                          />
+                        <label htmlFor={categoryName?.value}>{categoryName?.label}</label>
+                      </div>
+                    )
+                  })
+                }
+              </form>
+            </div>
           </div>
-          {/* filter by  */}
-          <div className='text-lg'>
-            <h3 className='text-base uppercase font-medium text-slate-500 border-b pb-1 border-slate-300'>Category</h3>
-            <form className=' text-sm flex gap-2 flex-col py-2'>
-              {
-                productCategories?.map((categoryName,index)=>{
-                  return (
-                    <div className='flex items-center gap-3'>
-                      <input type='checkbox' 
-                            name={"category"} 
-                            checked={selectCategory[categoryName?.value]}
-                            id={categoryName?.value}
-                            value={categoryName?.value}
-                            onChange={(e)=>handleSelectCategory(e)}
-                        />
-                      <label htmlFor={categoryName?.value}>{categoryName?.label}</label>
-                    </div>
-                  )
-                })
-              }
-            </form>
-          </div>
-        </div>
+        }   
         {/* right side  */}
-        <div className='px-4'>
+        <div className={`px-4 ${filterOption ? 'w-full':"w-fit"}`}>
           <p className='font-medium text-slate-800 text-lg my-2'>Search Results : {data?.length}</p>
-          <div className='min-h-calc(100vh-120px)] overflow-y-scroll max-h-[calc(100vh-120px)]'>
+          <div className='min-h-calc(100vh-120px)] w-full overflow-y-auto max-h-[calc(100vh-120px)]'>
             {
               data?.length !== 0 && !loading && (
                 <VerticalProduct data={data} loading={loading}/>

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import {useParams} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
 import SummaryApi from '../common'
 import { FaStar, FaStarHalf } from 'react-icons/fa'
 import displayINRCurrency from '../helpers/displayCurrency'
@@ -17,6 +17,7 @@ const ProductDetails = () => {
     price:"",
     sellingPrice:"",
   })
+  const navigate = useNavigate()
   const params = useParams()
   console.log('params' ,params)
   const [loading,setLoading] = useState(false)
@@ -75,6 +76,11 @@ const ProductDetails = () => {
   const handleAddToCart = async(e,id)=>{
     await addToCart(e,id)
     fetchUserAddToCart()
+  }
+  const handleBuyButton = async(e,id)=>{
+    await addToCart(e,id)
+    fetchUserAddToCart()
+    navigate('/cart')
   }
   return (
     <div className='container mx-auto p-4'>
@@ -187,8 +193,8 @@ const ProductDetails = () => {
                 <p className='text-slate-500 line-through'>{displayINRCurrency(data?.price)}</p>
               </div>
               <div className='flex items-center gap-3 my-2 '>
-                <button className='px-3 py-2 font-medium border-2 border-blue-600 text-blue-600 hover:text-white  hover:bg-blue-700 hover:scale-105 transition-all rounded  min-w-[120px]'>Buy</button>
-                <button className='px-3 py-2 font-medium border-2 bg-blue-600 text-white hover:border-blue-600 hover:bg-white hover:text-blue-600 hover:scale-105 transition-all rounded  min-w-[120px]' onClick={(e)=>handleAddToCart(e,data._id)}>Add To Cart</button>
+                <button className='px-3 py-2 font-medium border-2 border-blue-600 text-blue-600 hover:text-white  hover:bg-blue-700 hover:scale-105 transition-all rounded  min-w-[120px]' onClick={(e)=>handleBuyButton(e,data?._id)}>Buy</button>
+                <button className='px-3 py-2 font-medium border-2 bg-blue-600 text-white hover:border-blue-600 hover:bg-white hover:text-blue-600 hover:scale-105 transition-all rounded  min-w-[120px]' onClick={(e)=>handleAddToCart(e,data?._id)}>Add To Cart</button>
               </div>
               <div>
                 <p className='text-slate-600 font-medium my-1'>

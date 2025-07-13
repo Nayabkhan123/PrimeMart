@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import './App.css';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
@@ -11,6 +11,10 @@ import { useDispatch } from 'react-redux';
 import { setuserDetails } from './store/userSlice';
 import { FaBold } from 'react-icons/fa';
 function App() {
+  const location = useLocation()
+  const hideFooter = ['/login', '/sign-up','/admin-panel/all-products','/admin-panel/all-users','/cart'].includes(location.pathname);
+  const hideNavBar = ['/login', '/sign-up'].includes(location.pathname);
+
   const dispatch = useDispatch()
   const [countTotalCartProducts,setCountTotalCartProducts] = useState(0)
   async function fetchUserDetails() {
@@ -56,11 +60,11 @@ function App() {
         fetchUserAddToCart //
       }}>
       <ToastContainer position='bottom-right'/>
-      <Header/>
-      <main className='min-h-[calc(100vh-120px)] bg-gray-100 mt-16'>
+      {!hideNavBar && <div className='mt-16'><Header/></div>}
+      <main className='min-h-[calc(100vh-120px)] bg-slate-50'>
         <Outlet/>
       </main>
-      <Footer/>
+      {!hideFooter && <Footer/>}
       </Context.Provider>
     </div>
   );

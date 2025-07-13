@@ -25,9 +25,9 @@ export const AllProducts = () => {
     fetchAllProduct()
   },[])
   return (
-    <div>
-      <div className='bg-white py-2 px-4 flex justify-between items-center'>
-      <h2 className='font-bold text-lg'>All Product</h2>
+    <div className='bg-slate-50 flex flex-col gap-2'>
+      <div className='p-8 pb-4 flex justify-between items-center'>
+      <h2 className='font-semibold text-3xl'>All Product</h2>
       <button onClick={()=>setOpenUploadProduct(true)} className='border-2 border-blue-600 text-blue-600 hover:bg-blue-700 hover:text-white rounded-full px-4 py-2 font-semibold shadow-md transition-all'>Upload Product</button>
       </div>
       {/* upload product components */}

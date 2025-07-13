@@ -32,7 +32,8 @@ export const AllUsers = () => {
   },[])
 
 
-  function clickHandler(el){
+  function clickHandler(el,event){
+    // event.stopPropagation()
     setUpdatesUserDetails({
       userid:el._id,
       name:el.name,
@@ -41,13 +42,15 @@ export const AllUsers = () => {
     })
     console.log(el._id)
     setOpenRoleChangeBox(true);
+    
   }
   return (
-    <div>
-      <table className="w-full usertable ">
+    <div className='mt-10 mx-6 flex gap-3 flex-col'>
+      <h2 className='text-center font-semibold text-4xl text-slate-800'>List of All Users</h2>
+      <table className="w-full usertable">
         <thead>
-          <tr className='bg-black text-white'>
-            <th>Sr.</th>
+          <tr className='bg-slate-700 text-white'>
+            <th className='p-4'>S No.</th>
             <th>Name</th>
             <th>Email</th>
             <th>Role</th>
@@ -59,13 +62,13 @@ export const AllUsers = () => {
           {
             alluser.map((el,index)=>(
               <tr>
-                <td>{index+1}</td>
+                <td className='p-4'>{index+1}</td>
                 <td>{el?.name}</td>
                 <td>{el?.email}</td>
                 <td>{el?.role}</td>
                 <td>{moment(el?.createdAt).format('lll')}</td>
                 <th>
-                  <button onClick={()=>clickHandler(el)} className='bg-green-200 p-2 text-lg rounded-full hover:bg-green-400 '>
+                  <button onClick={(event)=>{clickHandler(el,event)}} className='bg-green-200 p-2 text-lg rounded-full hover:bg-green-400 '>
                     <FaUserEdit/>
                   </button>
                 </th>

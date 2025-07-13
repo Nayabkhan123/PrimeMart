@@ -44,13 +44,13 @@ const VerticalProduct = ({loading,data=[]}) => {
                             return(
                                 <Link to={"/product/"+product?._id}
                                         onClick={scrollTop}
-                                        className='w-full min-w-[280px] md:min-w-[300px] max-w-[280px] md:max-w-[300px] bg-white rounded-sm shadow-md'>
-                                    <div className='bg-slate-200 h- p-4 min-w-[120px] md:min-w-[145px] flex justify-center items-center'>
+                                        className='w-full lg:min-w-[280px] md:min-w-[100px] max-w-[180px] lg:max-w-[300px] bg-white rounded-sm shadow-md'>
+                                    <div className='bg-slate-100 p-4 min-w-[80px] md:min-w-[145px] flex justify-center items-center'>
                                         <img src={product?.productImage[0]} 
-                                            className='object-scale-down h-48 hover:scale-110 transition-all mix-blend-multiply'/>
+                                            className='object-scale-down h-28 lg:h-48 hover:scale-110 transition-all mix-blend-multiply'/>
                                     </div>
                                     <div className='p-4 grid gap-2'>
-                                        <h2 className='font-medium capitalize text-base md:text-lg text-ellipsis line-clamp-1'>{product?.productName}</h2>
+                                        <h2 className='font-medium capitalize text-base lg-text-lg text-ellipsis line-clamp-1'>{product?.productName}</h2>
                                         <p className='capitalize'>{product?.category}</p>
                                         <div className='flex gap-3'>
                                             <p className='text-red-600 font-medium'>{displayINRCurrency(product?.sellingPrice)}</p>
