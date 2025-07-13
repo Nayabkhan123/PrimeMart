@@ -1,4 +1,4 @@
-const backendDomain = "http://localhost:8080/api";
+const backendDomain = process.env.REACT_APP_BACKEND_URL
 // const backendDomain = "http://192.168.66.54:8080/api";
 // const backendDomain = "https://eb35-2409-40d0-2009-7978-89b2-eca3-be96-313a.ngrok-free.app/api";
 
