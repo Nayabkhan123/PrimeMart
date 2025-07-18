@@ -25,8 +25,6 @@ This repository contains the complete codebase for a modern full-stack e-commerc
   - [Shopping Cart](#shopping-cart)
   - [Order & Payment Processing](#order--payment-processing)
   - [Admin Panel](#admin-panel)
-- [Contributing](#contributing)
-
 ---
 
 ## Features
@@ -89,104 +87,7 @@ This full-stack e-commerce application provides a comprehensive set of functiona
 ## Project Structure
 
 ### Frontend Structure
-
-Given you've provided both the frontend and backend code, I'll create a single, comprehensive README file that covers both parts of your e-commerce project. This will provide a holistic view for anyone looking at your GitHub repository.
-
-Markdown
-
-# Full-Stack E-commerce Application
-
-This repository contains the complete codebase for a modern full-stack e-commerce platform. The application offers a rich shopping experience for users, featuring product Browse, detailed product views, a shopping cart, secure payment processing, and robust authentication. Administrators gain access to a dedicated panel for managing users, products, and orders.
-
----
-
-## Table of Contents
-
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-  - [Frontend](#frontend)
-  - [Backend](#backend)
-- [Project Structure](#project-structure)
-  - [Frontend Structure](#frontend-structure)
-  - [Backend Structure](#backend-structure)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Environment Variables](#environment-variables)
-  - [Installation](#installation)
-  - [Running the Application](#running-the-application)
-- [API Endpoints](#api-endpoints)
-- [Key Functionalities Explained](#key-functionalities-explained)
-  - [Authentication & Authorization](#authentication--authorization)
-  - [Product Management](#product-management)
-  - [Shopping Cart](#shopping-cart)
-  - [Order & Payment Processing](#order--payment-processing)
-  - [Admin Panel](#admin-panel)
-- [Contributing](#contributing)
-- [License](#license)
-
----
-
-## Features
-
-This full-stack e-commerce application provides a comprehensive set of functionalities for both customers and administrators.
-
-### User Features
-
-* **Responsive User Interface:** A modern and intuitive design optimized for desktop, tablet, and mobile devices.
-* **Product Catalog Browse:** Explore a wide range of products categorized for easy navigation.
-* **Powerful Search & Filtering:** Efficiently find products using keywords and refine results by categories and price.
-* **Detailed Product Pages:** View high-resolution images, descriptions, pricing, and related product suggestions.
-* **Interactive Image Zoom:** Get a closer look at product images on detail pages.
-* **Shopping Cart Management:** Add items, adjust quantities, and remove products from the cart seamlessly.
-* **User Authentication:** Secure registration, login, and logout processes.
-* **Order History:** Access a personal dashboard to view past orders and their details.
-* **Secure Payment Gateway:** Integrated with **Stripe** for secure and reliable online payments.
-* **Toast Notifications:** Real-time feedback to users for actions like adding to cart, login success, etc.
-
-### Admin Features (Role-Based Access)
-
-* **User Management:** View all registered users and update their roles (e.g., promote to 'ADMIN', demote to 'GENERAL').
-* **Product Management:**
-    * **Create Products:** Add new products to the inventory with all necessary details (name, brand, category, images, pricing).
-    * **Update Products:** Modify existing product information.
-    * (Future: Delete Products - can be easily extended)
-* **Order Management:** View a comprehensive list of all customer orders, including payment and shipping details.
-
----
-
-## Technologies Used
-
-### Frontend
-
-* **React.js:** A JavaScript library for building dynamic and interactive user interfaces.
-* **Redux Toolkit:** The official, opinionated, batteries-included toolset for efficient Redux development and state management.
-* **React Router DOM:** For declarative client-side routing.
-* **Tailwind CSS:** A utility-first CSS framework for rapid UI development.
-* **Cloudinary:** For cloud-based image storage and delivery.
-* **Stripe.js:** Frontend integration for Stripe Checkout.
-* **React Toastify:** For elegant toast notifications.
-* **Moment.js:** For date and time formatting.
-* **React Icons:** A library providing popular SVG icons.
-
-### Backend
-
-* **Node.js:** JavaScript runtime environment.
-* **Express.js:** A fast, unopinionated, minimalist web framework for Node.js.
-* **MongoDB:** A NoSQL document database for data storage.
-* **Mongoose:** An ODM (Object Data Modeling) library for MongoDB and Node.js.
-* **JWT (JSON Web Tokens):** For secure user authentication and session management.
-* **Bcrypt.js:** For hashing and salting passwords to enhance security.
-* **Cookie-Parser:** Middleware to parse cookie headers.
-* **CORS:** Middleware to enable Cross-Origin Resource Sharing.
-* **Stripe Node.js Library:** Backend integration for Stripe payments and webhooks.
-* **Dotenv:** For loading environment variables from a `.env` file.
-
----
-
-## Project Structure
-
-### Frontend Structure
-
+```
 ├── src/
 │   ├── assest/              # Static assets (images)
 │   ├── common/              # Common constants, API endpoints, roles
@@ -200,123 +101,10 @@ This full-stack e-commerce application provides a comprehensive set of functiona
 │   ├── index.js             # Entry point of the React app
 │   └── router/              # React Router configuration
 ├── .env.example             # Example frontend environment variables
+```
 
 ### Backend Structure
-
-Given you've provided both the frontend and backend code, I'll create a single, comprehensive README file that covers both parts of your e-commerce project. This will provide a holistic view for anyone looking at your GitHub repository.
-
-Markdown
-
-# Full-Stack E-commerce Application
-
-This repository contains the complete codebase for a modern full-stack e-commerce platform. The application offers a rich shopping experience for users, featuring product Browse, detailed product views, a shopping cart, secure payment processing, and robust authentication. Administrators gain access to a dedicated panel for managing users, products, and orders.
-
----
-
-## Table of Contents
-
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-  - [Frontend](#frontend)
-  - [Backend](#backend)
-- [Project Structure](#project-structure)
-  - [Frontend Structure](#frontend-structure)
-  - [Backend Structure](#backend-structure)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Environment Variables](#environment-variables)
-  - [Installation](#installation)
-  - [Running the Application](#running-the-application)
-- [API Endpoints](#api-endpoints)
-- [Key Functionalities Explained](#key-functionalities-explained)
-  - [Authentication & Authorization](#authentication--authorization)
-  - [Product Management](#product-management)
-  - [Shopping Cart](#shopping-cart)
-  - [Order & Payment Processing](#order--payment-processing)
-  - [Admin Panel](#admin-panel)
-- [Contributing](#contributing)
-- [License](#license)
-
----
-
-## Features
-
-This full-stack e-commerce application provides a comprehensive set of functionalities for both customers and administrators.
-
-### User Features
-
-* **Responsive User Interface:** A modern and intuitive design optimized for desktop, tablet, and mobile devices.
-* **Product Catalog Browse:** Explore a wide range of products categorized for easy navigation.
-* **Powerful Search & Filtering:** Efficiently find products using keywords and refine results by categories and price.
-* **Detailed Product Pages:** View high-resolution images, descriptions, pricing, and related product suggestions.
-* **Interactive Image Zoom:** Get a closer look at product images on detail pages.
-* **Shopping Cart Management:** Add items, adjust quantities, and remove products from the cart seamlessly.
-* **User Authentication:** Secure registration, login, and logout processes.
-* **Order History:** Access a personal dashboard to view past orders and their details.
-* **Secure Payment Gateway:** Integrated with **Stripe** for secure and reliable online payments.
-* **Toast Notifications:** Real-time feedback to users for actions like adding to cart, login success, etc.
-
-### Admin Features (Role-Based Access)
-
-* **User Management:** View all registered users and update their roles (e.g., promote to 'ADMIN', demote to 'GENERAL').
-* **Product Management:**
-    * **Create Products:** Add new products to the inventory with all necessary details (name, brand, category, images, pricing).
-    * **Update Products:** Modify existing product information.
-    * (Future: Delete Products - can be easily extended)
-* **Order Management:** View a comprehensive list of all customer orders, including payment and shipping details.
-
----
-
-## Technologies Used
-
-### Frontend
-
-* **React.js:** A JavaScript library for building dynamic and interactive user interfaces.
-* **Redux Toolkit:** The official, opinionated, batteries-included toolset for efficient Redux development and state management.
-* **React Router DOM:** For declarative client-side routing.
-* **Tailwind CSS:** A utility-first CSS framework for rapid UI development.
-* **Cloudinary:** For cloud-based image storage and delivery.
-* **Stripe.js:** Frontend integration for Stripe Checkout.
-* **React Toastify:** For elegant toast notifications.
-* **Moment.js:** For date and time formatting.
-* **React Icons:** A library providing popular SVG icons.
-
-### Backend
-
-* **Node.js:** JavaScript runtime environment.
-* **Express.js:** A fast, unopinionated, minimalist web framework for Node.js.
-* **MongoDB:** A NoSQL document database for data storage.
-* **Mongoose:** An ODM (Object Data Modeling) library for MongoDB and Node.js.
-* **JWT (JSON Web Tokens):** For secure user authentication and session management.
-* **Bcrypt.js:** For hashing and salting passwords to enhance security.
-* **Cookie-Parser:** Middleware to parse cookie headers.
-* **CORS:** Middleware to enable Cross-Origin Resource Sharing.
-* **Stripe Node.js Library:** Backend integration for Stripe payments and webhooks.
-* **Dotenv:** For loading environment variables from a `.env` file.
-
----
-
-## Project Structure
-
-### Frontend Structure
-
-├── src/
-│   ├── assest/              # Static assets (images)
-│   ├── common/              # Common constants, API endpoints, roles
-│   ├── components/          # Reusable UI components (Header, Footer, Cards, Modals)
-│   ├── context/             # React Context for global state/functions (e.g., cart count)
-│   ├── helpers/             # Utility functions (e.g., currency formatter, image upload)
-│   ├── pages/               # Main application views/pages (Home, Login, AdminPanel)
-│   ├── store/               # Redux Toolkit store and slices (user slice)
-│   ├── App.css              # Global CSS and Tailwind overrides
-│   ├── App.js               # Main React application component
-│   ├── index.js             # Entry point of the React app
-│   └── router/              # React Router configuration
-├── .env.example             # Example frontend environment variables
-
-
-### Backend Structure
-
+```
 ├── config/                  # Database connection and Stripe configuration
 │   ├── db.js                # MongoDB connection setup
 │   └── stripe.js            # Stripe API key initialization
@@ -337,7 +125,7 @@ This full-stack e-commerce application provides a comprehensive set of functiona
 │   └── index.js             # Centralized route definitions
 ├── .env.example             # Example backend environment variables
 ├── server.js                # Main server file (Express app setup)
-
+```
 ---
 
 ## Getting Started
@@ -355,11 +143,14 @@ Follow these steps to set up and run the full-stack application locally.
 Both the frontend and backend require specific environment variables. Create separate `.env` files in the **root directory of both the `frontend` and `backend` folders**, mirroring the `.env.example` files.
 
 #### Frontend `.env` (in `frontend/.env`)
+```
 REACT_APP_BACKEND_URL=http://localhost:8080/api  # Your backend URL
 REACT_APP_CLOUD_NAME_CLOUDINARY=your_cloudinary_cloud_name
 REACT_APP_STRIPE_PUBLIC_KEY=pk_test_your_stripe_publishable_key
+```
 
 #### Backend `.env` (in `backend/.env`)
+```
 PORT=8080
 MONGODB_URL=mongodb://localhost:27017/ecommerce_db # Your MongoDB connection string
 TOKEN_SECRET=your_jwt_secret_key_here
@@ -369,6 +160,7 @@ STRIPE_ENDPOINT_WEBHOOK_SECRET_KEY=whsec_your_stripe_webhook_secret (optional fo
 
 **Note:** For `STRIPE_ENDPOINT_WEBHOOK_SECRET_KEY`, you'll typically get this from your Stripe dashboard when setting up a webhook. For local development, you might use the Stripe CLI to forward webhooks.
 
+```
 ### Installation
 
 1.  **Clone the repository:**
@@ -492,18 +284,5 @@ The backend exposes a RESTful API for various functionalities. All endpoints are
 * **Role Check:** The frontend `AdminPanel.jsx` component includes a `useEffect` hook to redirect non-admin users if they try to access the admin panel, providing client-side protection. The backend controllers provide server-side validation.
 * **User & Product Management Interfaces:** Dedicated pages (`AllUsers.jsx`, `AllProducts.jsx`, `AllOrders.jsx`) provide tabular views and interactive forms for managing data.
 * **Modals:** `UploadProduct`, `AdminEditProduct`, and `ChangeUserRole` components use modals for a focused user experience when performing administrative tasks.
-
----
-
-## Contributing
-
-Contributions are highly welcome! If you have suggestions for improvements, bug fixes, or new features, please follow these steps:
-
-1.  **Fork** the repository.
-2.  **Create a new branch** for your feature or bug fix: `git checkout -b feature/your-feature-name` or `git checkout -b bugfix/issue-description`.
-3.  **Make your changes**, ensuring they adhere to the existing code style.
-4.  **Write clear, concise commit messages**.
-5.  **Push your branch** to your forked repository: `git push origin feature/your-feature-name`.
-6.  **Open a Pull Request** to the `main` branch of this repository, describing your changes in detail.
 
 ---
