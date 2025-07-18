@@ -1,4 +1,4 @@
-# Full-Stack E-commerce Application
+# PrimeMart: Full-Stack E-commerce Application
 
 This repository contains the complete codebase for a modern full-stack e-commerce platform. The application offers a rich shopping experience for users, featuring product Browse, detailed product views, a shopping cart, secure payment processing, and robust authentication. Administrators gain access to a dedicated panel for managing users, products, and orders.
 
