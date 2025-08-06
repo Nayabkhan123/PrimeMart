@@ -1,11 +1,12 @@
 const jwt = require('jsonwebtoken')
 async function authToken(req,res,next){
     try{
-        const token = req.cookies?.token
+        const token = req.cookies?.token 
+        // || req.headers.authorization.split(" ")[1];
         // ||req.header
         // console.log("first" , req.cookies)
         if(!token){
-            return res.status(400).json({
+            return res.status(401).json({
                 message: "User not Login",
                 error:true,
                 success:false,
@@ -21,7 +22,6 @@ async function authToken(req,res,next){
             req.userid = decode?._id
             next(); 
         })
-        // console.log("token" ,token)
     }
     catch(err){
         res.status(400).json({

@@ -50,9 +50,9 @@ const HorizontalCardProduct = ({category,heading}) => {
                 <button onClick={scrollRight} className='bg-white rounded-full shadow-md p-1 absolute right-0 text-lg hidden md:block'><FaAngleRight/></button>
             {   loading ? 
                 (
-                    loadingList.map((el)=>{
+                    loadingList.map((_,index)=>{
                         return(
-                            <div className='w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] h-44 bg-white rounded-lg shadow-md flex'>
+                            <div key={index} className='w-full min-w-[240px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] h-44 bg-white rounded-lg shadow-md flex'>
                                 <div className='bg-slate-200 rounded-lg h-full p-4 min-w-[120px] md:min-w-[145px] animate-pulse'>
                                     
                                 </div>
@@ -73,19 +73,19 @@ const HorizontalCardProduct = ({category,heading}) => {
                 (
                     data?.map((product,index)=>{
                         return(
-                            <Link to={"product/"+product?._id} className='w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] h-44 bg-white rounded-3xl shadow-md flex'>
+                            <Link key={index} to={"product/"+product?._id} className='w-full min-w-[250px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] h-44 bg-white rounded-3xl shadow-md flex'>
                                 <div className='bg-slate-100 h-full p-4 min-w-[120px] md:min-w-[145px]'>
                                     <img src={product?.productImage[0]} 
                                         className='object-scale-down h-full hover:scale-110 transition-all mix-blend-multiply'/>
                                 </div>
-                                <div className='p-4 grid'>
-                                    <h2 className='font-medium capitalize text-base md:text-lg text-ellipsis line-clamp-1'>{product?.productName}</h2>
-                                    <p className='capitalize'>{product?.category}</p>
-                                    <div className='flx gap-3'>
-                                        <p className='text-red-600 font-medium'>{displayINRCurrency(product?.sellingPrice)}</p>
+                                <div className='w-[100%] p-2 grid'>
+                                    <h2 className='font-medium capitalize text-base text-ellipsis line-clamp-2'>{product?.productName}</h2>
+                                    <p className='capitalize text-sm'>{product?.brandName}</p>
+                                    <div className=''>
+                                        <p className='text-red-600 font-medium text-lg'>{displayINRCurrency(product?.sellingPrice)}</p>
                                         <p className='text-slate-500 line-through text-sm'>{displayINRCurrency(product?.price)}</p>
                                     </div>
-                                    <button className='text-sm bg-blue-600 hover:bg-blue-900 text-white py-1 px-2 rounded-full duration-75' onClick={(e)=>{handleAddToCart(e,product?._id)}}>Add to cart</button>
+                                    <button className='text-xs md:text-sm bg-blue-600 hover:bg-blue-900 text-white py-1 px-2 rounded-full duration-75' onClick={(e)=>{handleAddToCart(e,product?._id)}}>Add to cart</button>
                                 </div>
                             </Link>
                         )

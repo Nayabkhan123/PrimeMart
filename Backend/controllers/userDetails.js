@@ -3,7 +3,7 @@ const userModel = require("../models/userModel")
 async function userDetails(req,res) {
     try{
         const user= await userModel.findOne({_id:req.userid})
-        // console.log("user found ",user)
+        console.log("user found ",user)
         res.status(200).json({
             data:user,
             error:false,

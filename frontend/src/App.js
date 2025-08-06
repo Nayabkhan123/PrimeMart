@@ -27,10 +27,12 @@ function App() {
         if(apidata.success){
           dispatch(setuserDetails(apidata?.data))
         }
-        console.log("data-user",apidata)
+        else {
+          console.warn("User not logged in:", apidata.message);
+        }
     }
     catch(err){
-      console.log("fetchUserDetails gives error")
+      console.log("fetchUserDetails gives error",err)
     }
   }
   const fetchUserAddToCart = async()=>{
@@ -40,7 +42,13 @@ function App() {
         credentials:`include`
       })
       const apidata = await apiresponse.json()
-      setCountTotalCartProducts(apidata?.data?.count)
+      // setCountTotalCartProducts(apidata?.data?.count)
+      if (apidata.success) {
+        setCountTotalCartProducts(apidata.data.count);
+      } else {
+        console.warn("User not logged in or unable to fetch cart count:", apidata.message);
+        setCountTotalCartProducts(0);
+      }
     }
     catch(err){
       console.log("error while fetching add to cart")

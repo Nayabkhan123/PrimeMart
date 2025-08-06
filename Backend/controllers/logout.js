@@ -1,9 +1,12 @@
 async function userLogoutController(req,res){
     try{
+        const isProduction = process.env.isProduction === 'production';
         const tokenOption = {
             httpOnly:true,
             secure:true,
-            sameSite: "None"
+            // for testing purpose
+            // secure:false,
+            sameSite: isProduction ? "None" : "Lax"
         }
         res.clearCookie("token",tokenOption);
         return res.status(200).json({

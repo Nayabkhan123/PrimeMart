@@ -21,7 +21,7 @@ app.use("/api",router)
 
 const PORT = 8080 || process.env.PORT
 dbConnect().then(()=>{
-    app.listen(PORT,()=>{
+    app.listen(PORT,'0.0.0.0',()=>{
         console.log(`Server is running at port ${PORT}`)
     })
 });

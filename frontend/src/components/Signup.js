@@ -78,9 +78,9 @@ export const Signup = () => {
         console.log(data);
   return (
     <section id='signup' 
-    className="relative flex items-center justify-end min-h-screen bg-cover bg-center"
-        style={{ backgroundImage: `url(${registerImage})` }}>
-            <div className='bg-transparent w-full max-w-lg flex flex-col py-6 rounded-2xl border-[1px] border-black mr-12'>
+    className="relative p-2 flex lg:items-center lg:justify-end lg:h-screen bg-cover bg-center"
+        style={{ backgroundImage: window.innerWidth >= 1024 ? `url(${registerImage})` : "none" }}>
+            <div className='bg-transparent w-full max-w-lg flex flex-col mx-auto py-6 rounded-2xl border-[1px] border-black lg:mr-12'>
                 <div className='h-fit mx-auto relative'>
 
                     <div className='my-2'>

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const CategoryList = () => {
     const [categoryProduct,setCategoryProduct]= useState([]);
     const [loading,setLoading] = useState(false)
-    
+    const categoryList = new Array(13).fill(null)
     const fetchCategoryProduct = async()=>{
         try{
             setLoading(true)
@@ -33,17 +33,24 @@ const CategoryList = () => {
         <div className='flex items-center gap-4 justify-between overflow-scroll scrollbar-none'>
             {
                 loading ? (
-                    <div className='w-full h-16 flex justify-center items-center'>
-                        <div className='loader'></div>
-                    </div>
+                    categoryList.map((_,index)=>{
+                        return (
+                            <div key={index} className='cursor-pointer animate-pulse'>
+                                <div className='animate-pulse md:w-20 w-16 h-16 md:h-20 flex rounded-full overflow-hidden p-3 bg-slate-200'>
+                                    <div className='animate-pulse h-full transition-all'/>
+                                </div>
+                                <p className='animate-pulse'></p>
+                            </div>
+                        )
+                    })
                 ):
                 (
                     categoryProduct.map((product,index)=>{
                         return (
-                            <Link to={"/product-category?category="+product?.category} className='cursor-pointer'>
+                            <Link key={index} to={"/product-category?category="+product?.category} className='cursor-pointer'>
                                 <div className='md:w-20 w-16 h-16 md:h-20 flex rounded-full overflow-hidden p-3 bg-slate-100 border-[0.1px] border-slate-200 items-center justify-center'>
                                     <img src={product?.productImage[0]} alt={product?.category}
-                                        className='h-full object-scale-down mix-blend-multiply hover:scale-125 transition-all'/>
+                                        className='h-full object-scale-down mix-blend-multiply scale-125 md:scale-105 md:hover:scale-125 transition-all'/>
                                 </div>
                                 <p className='capitalize text-center text-sm md:text-base'>{product.category}</p>
                             </Link>

@@ -54,9 +54,9 @@ export const Login = () => {
     console.log(data);
   return (
     <section id='login' 
-    className="relative flex items-center min-h-screen bg-cover bg-center"
-    style={{ backgroundImage: `url(${loginImage})` }}>
-            <div className='bg-transparent ml-12 border-black border-[1px] py-12 w-full max-w-lg flex flex-col rounded-2xl'>
+    className="relative flex items-center justify-center p-2 min-h-screen bg-cover bg-center"
+    style={{ backgroundImage: window.innerWidth >= 1024 ? `url(${loginImage})` : "none" }}>
+            <div className='bg-transparent lg:ml-12 border-black border-[1px] py-12 w-full mx-auto max-w-lg flex flex-col rounded-2xl'>
                 <div className='animate-bounce mx-auto'>
                     <img className='rounded-full' src={loginIcon} width={150}/>
                 </div>

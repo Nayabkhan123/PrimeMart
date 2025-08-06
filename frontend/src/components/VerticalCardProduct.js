@@ -49,9 +49,9 @@ const VerticalCardProduct = ({category,heading}) => {
                 <button onClick={scrollRight} className='bg-white rounded-full shadow-md p-1 absolute right-0 text-lg hidden md:block'><FaAngleRight/></button>
             { loading ? 
                 (
-                    loadingList.map((index)=>{
+                    loadingList.map((_,index)=>{
                         return(
-                            <div className='w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] bg-white rounded-sm shadow-md'>
+                            <div key={index} className='w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] bg-white rounded-sm shadow-md'>
                                 <div className='bg-slate-200 animate-pulse h-60 p-4 min-w-[120px] md:min-w-[145px] flex justify-center items-center'>
                                 </div>
                                 <div className='p-4 grid gap-2'>
@@ -71,16 +71,16 @@ const VerticalCardProduct = ({category,heading}) => {
                 (
                     data?.map((product,index)=>{
                         return(
-                            <Link to={"product/"+product?._id} className='w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] bg-white rounded-sm shadow-md'>
+                            <Link to={"product/"+product?._id} key={index} className='w-full min-w-[200px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] bg-white rounded-sm shadow-md'>
                                 <div className='bg-slate-200 h-full p-4 min-w-[120px] md:min-w-[145px] flex justify-center items-center'>
                                     <img src={product?.productImage[0]} 
                                         className='object-scale-down h-48 hover:scale-110 transition-all mix-blend-multiply'/>
                                 </div>
                                 <div className='p-4 grid gap-2'>
-                                    <h2 className='font-medium capitalize text-base md:text-lg text-ellipsis line-clamp-1'>{product?.productName}</h2>
-                                    <p className='capitalize'>{product?.category}</p>
-                                    <div className='flex gap-3'>
-                                        <p className='text-red-600 font-medium'>{displayINRCurrency(product?.sellingPrice)}</p>
+                                    <h2 className='font-medium capitalize text-base text-ellipsis line-clamp-2'>{product?.productName}</h2>
+                                    <p className='capitalize text-sm'>{product?.brandName}</p>
+                                    <div className='flex gap-3 items-center'>
+                                        <p className='text-red-600 font-medium text-lg'>{displayINRCurrency(product?.sellingPrice)}</p>
                                         <p className='text-slate-500 line-through text-sm'>{displayINRCurrency(product?.price)}</p>
                                     </div>
                                     <button className='text-sm bg-blue-600 hover:bg-blue-900 text-white py-1 px-2 rounded-full duration-75' onClick={(e)=>{handleAddToCart(e,product?._id)}}>Add to cart</button>

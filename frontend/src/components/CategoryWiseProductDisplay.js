@@ -33,20 +33,19 @@ const CategoryWiseProductDisplay = ({category,heading}) => {
 
     
   return (
-    <div className='container mx-auto px-4 my-6 relative'>
+    <div className='container mx-auto md:px-4 my-6 relative'>
         <h2 className='text-2xl font-semibold py-4 '>
             {heading}
         </h2>
         {/* <VerticalProduct loading={loading} data={data}/> */}
-        <div className='grid grid-cols-[repeat(auto-fit,minmax(300px,300px))] justify-between md:gap-6 overflow-scroll scrollbar-none transition-all' >
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4">
                 
             { loading ? 
                 (
                     loadingList.map((index)=>{
                         return(
-                            <div className='w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] bg-white rounded-sm shadow-md'>
-                                <div className='bg-slate-200 animate-pulse h-60 p-4 min-w-[120px] md:min-w-[145px] flex justify-center items-center'>
-                                </div>
+                            <div className='w-full bg-white rounded-sm shadow-md'>
+                                <div className='bg-slate-200 animate-pulse h-60 p-4 flex justify-center items-center'></div>
                                 <div className='p-4 grid gap-2'>
                                     <h2 className='bg-slate-200 p-2 animate-pulse w-full rounded-full'></h2>
                                     <p className='bg-slate-200 p-2 animate-pulse w-full rounded-full'></p>
@@ -66,16 +65,16 @@ const CategoryWiseProductDisplay = ({category,heading}) => {
                         return(
                             <Link to={"/product/"+product?._id}
                                     onClick={scrollTop}
-                                    className='w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] bg-white rounded-sm shadow-md'>
-                                <div className='bg-slate-200 h- p-4 min-w-[120px] md:min-w-[145px] flex justify-center items-center'>
+                                    className='w-full bg-white rounded-sm shadow-md'>
+                                <div className='bg-slate-100 shadow-sm h-52 p-2 flex justify-center items-center'>
                                     <img src={product?.productImage[0]} 
-                                        className='object-scale-down h-48 hover:scale-110 transition-all mix-blend-multiply'/>
+                                        className='object-scale-down h-40 hover:scale-110 transition-all mix-blend-multiply'/>
                                 </div>
                                 <div className='p-4 grid gap-2'>
-                                    <h2 className='font-medium capitalize text-base md:text-lg text-ellipsis line-clamp-1'>{product?.productName}</h2>
+                                    <h2 className='font-medium capitalize text-base md:text-lg text-ellipsis line-clamp-3 md:line-clamp-2'>{product?.productName}</h2>
                                     <p className='capitalize'>{product?.category}</p>
-                                    <div className='flex gap-3'>
-                                        <p className='text-red-600 font-medium'>{displayINRCurrency(product?.sellingPrice)}</p>
+                                    <div className='flex flex-col md:flex-row md:gap-3 md:items-center'>
+                                        <p className='text-red-600 font-medium text-lg '>{displayINRCurrency(product?.sellingPrice)}</p>
                                         <p className='text-slate-500 line-through text-sm'>{displayINRCurrency(product?.price)}</p>
                                     </div>
                                     <button className='text-sm bg-blue-600 hover:bg-blue-900 text-white py-1 px-2 rounded-full duration-75' onClick={(e)=>{handleAddToCart(e,product?._id)}}>Add to cart</button>

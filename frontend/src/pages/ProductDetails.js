@@ -84,57 +84,61 @@ const ProductDetails = () => {
   }
   return (
     <div className='container mx-auto p-4'>
-      <div className='min-h-[200px] flex flex-col lg:flex-row gap-4'>
+      <div className='relative min-h-[200px] flex flex-col lg:flex-row gap-4'>
         {/* product image  */}
-        <div className='h-96 flex gap-3 flex-col lg:flex-row-reverse'>
-          <div className='h-[300px] w-[300px] bg-slate-200 lg:h-96 lg:w-96 relative' >
-            <img src={activeImage} className='h-full w-full p-3 object-scale-down mix-blend-multiply cursor-pointer' onMouseMove={(e)=>handleZoomImage(e)} onMouseLeave={handleZoomOutImage}/>
-            {
-              // zoomImage part 
-              zoomImage && (
-                <div className='hidden lg:block absolute min-w-[500px] min-h-[500px] z-40 bg-slate-200 p-1 -right-[520px] top-0 overflow-hidden' >
-                  <div className='w-full bg-slate-100 mix-blend-multiply h-full min-h-[500px] min-w-[500px] scale-150 '
-                    style={{
-                      backgroundImage: `url(${activeImage})`,
-                      backgroundRepeat: 'no-repeat',
-                      backgroundPosition: `${zoomImageportion.x*100}% ${zoomImageportion.y*100}%`
-                    }}>
+        <div className="w-full lg:w-1/2">
+          <div className='sticky top-24 flex flex-col gap-4'>
+            <div className='h-96 flex gap-3 flex-col lg:flex-row-reverse'>
+              <div className='h-[300px] w-full bg-slate-100 border-2 lg:h-96 lg:w-96 relative' >
+                <img src={activeImage} className='h-full w-full p-3 object-scale-down mix-blend-multiply cursor-pointer' onMouseMove={(e)=>handleZoomImage(e)} onMouseLeave={handleZoomOutImage}/>
+                {
+                  // zoomImage part 
+                  zoomImage && (
+                    <div className='hidden lg:block absolute min-w-[500px] min-h-[500px] z-40 bg-slate-200 p-1 -right-[520px] top-0 overflow-hidden' >
+                      <div className='w-full bg-slate-100 mix-blend-multiply h-full min-h-[500px] min-w-[500px] scale-150 '
+                        style={{
+                          backgroundImage: `url(${activeImage})`,
+                          backgroundRepeat: 'no-repeat',
+                          backgroundPosition: `${zoomImageportion.x*100}% ${zoomImageportion.y*100}%`
+                        }}>
 
-                  </div>
-                </div>
-              )
-            }
-          </div>
+                      </div>
+                    </div>
+                  )
+                }
+              </div>
 
-          <div className='h-full'>
-            {
-              loading ? (
-                <div className='flex gap-2 lg:flex-col overflow-scroll scrollbar-none h-full'>
-                  {
-                    productImageLoading.map((e1,index)=>{
-                      return(
-                        <div className='h-20 w-20 bg-slate-200 rounded animate-pulse' key={"loadingImage"+index}>
-                          
-                        </div>
-                      )
-                    })
-                  }
-                </div>
-              ):
-              (
-                <div className='flex cursor-pointer gap-2 lg:flex-col overflow-scroll scrollbar-none h-full'>
-                  {
-                    data?.productImage?.map((image,index)=>{
-                      return(
-                        <div className='h-20 w-20 bg-slate-200 rounded' key={index}>
-                          <img onMouseEnter={()=>handleMouseHover(image)} src={image} className='w-full h-full object-scale-down mix-blend-multiply p-1'/>
-                        </div>
-                      )
-                    })
-                  }
-                </div>
-              )
-            }
+              <div className=''>
+                {
+                  loading ? (
+                    <div className='flex gap-2 lg:flex-col overflow-scroll scrollbar-none h-full'>
+                      {
+                        productImageLoading.map((e1,index)=>{
+                          return(
+                            <div className='h-28 lg:min-h-16 w-28 lg:min-w-16 bg-slate-200 rounded animate-pulse' key={"loadingImage"+index}>
+                              
+                            </div>
+                          )
+                        })
+                      }
+                    </div>
+                  ):
+                  (
+                    <div className='flex w-full cursor-pointer gap-2 lg:flex-col overflow-scroll scrollbar-none h-full'>
+                      {
+                        data?.productImage?.map((image,index)=>{
+                          return(
+                            <div className='min-h-24 max-h-24 lg:max-h-24 min-w-20 max-w-20 lg:max-w-20 bg-slate-100 border-2 rounded' key={index}>
+                              <img onMouseEnter={()=>handleMouseHover(image)} src={image} className='w-full h-full object-scale-down mix-blend-multiply'/>
+                            </div>
+                          )
+                        })
+                      }
+                    </div>
+                  )
+                }
+              </div>
+            </div>
           </div>
         </div>
         {/* product details */}
@@ -171,8 +175,8 @@ const ProductDetails = () => {
             </div>
           ):
           (
-            <div className='flex flex-col gap-1'>
-              <p className='capitalize bg-red-100 text-red-600 px-2 rounded-full inline-block w-fit'>
+            <div className=' flex flex-col gap-1'>
+              <p className='capitalize mt-6 lg:mt-0 bg-red-100 text-red-600 px-2 rounded-full inline-block w-fit'>
                 {data?.brandName}
               </p>
               <h2 className='capitalize text-2xl lg:text-4xl font-medium'>
