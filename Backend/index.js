@@ -1,19 +1,24 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const compression = require("compression");
 
 require("dotenv").config();
 const dbConnect = require("./config/db")
 const router = require('./routers');
 const cookieParser = require("cookie-parser");
+
+// Enable compression for all responses
+app.use(compression());
+
 app.use(cookieParser());
 app.use(cors({
     origin:process.env.FRONTEND_URL,
     credentials:true,
-    
 }));
 
-app.use(express.json())
+// Increase JSON payload limit if needed
+app.use(express.json({ limit: '10mb' }))
 
 app.use("/api",router)
 

@@ -33,10 +33,10 @@ const SearchForProduct = () => {
                 </div>
             )
         }
-        <p className='text-lg font-semibold my-3'>Search Results : {data?.length}</p>
+        <p className='text-lg font-semibold my-3 dark:text-white'>Search Results : {data?.length}</p>
         {
             data?.length === 0 && !loading && (
-                 <p className='bg-white text-lg text-center p-4'>No Data Found...</p>
+                 <p className='bg-white dark:bg-dark-card text-lg text-center p-4 dark:text-gray-400 rounded shadow dark:shadow-gray-900/50'>No Data Found...</p>
             )
         }
         {

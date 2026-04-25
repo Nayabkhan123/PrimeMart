@@ -52,10 +52,10 @@ const BannerProduct = () => {
     },[currentImage])
   return (
     <div className='container mx-auto px-4 rounded overflow-hidden'>
-        <div className='h-56 md:h-72 w-full bg-slate-200 relative'>
-            <div className='absolute z-10 w-full h-full justify-between text-2xl items-center hidden md:flex'>
-                <button onClick={prevImage} className='bg-white rounded-full shadow-md p-2'><FaAngleLeft/></button>
-                <button onClick={nextImage} className='bg-white rounded-full shadow-md p-2'><FaAngleRight/></button>
+        <div className='h-56 md:h-72 w-full bg-slate-200 dark:bg-dark-card relative rounded-lg shadow-md dark:shadow-gray-900/50'>
+            <div className='absolute z-10 w-full h-full justify-between text-2xl items-center hidden md:flex px-4'>
+                <button onClick={prevImage} className='bg-white dark:bg-dark-card text-gray-900 dark:text-white rounded-full shadow-md dark:shadow-gray-900/50 p-2 hover:bg-gray-100 dark:hover:bg-dark-hover'><FaAngleLeft/></button>
+                <button onClick={nextImage} className='bg-white dark:bg-dark-card text-gray-900 dark:text-white rounded-full shadow-md dark:shadow-gray-900/50 p-2 hover:bg-gray-100 dark:hover:bg-dark-hover'><FaAngleRight/></button>
             </div>
             {/* desktop and tablet version */}
             <div className='md:flex hidden w-full h-full overflow-hidden'>

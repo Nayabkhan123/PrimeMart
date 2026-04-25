@@ -78,16 +78,16 @@ export const Signup = () => {
         console.log(data);
   return (
     <section id='signup' 
-    className="relative p-2 flex lg:items-center lg:justify-end lg:h-screen bg-cover bg-center"
+    className="relative p-2 flex lg:items-center lg:justify-end lg:h-screen bg-cover bg-center dark:bg-dark-bg"
         style={{ backgroundImage: window.innerWidth >= 1024 ? `url(${registerImage})` : "none" }}>
-            <div className='bg-transparent w-full max-w-lg flex flex-col mx-auto py-6 rounded-2xl border-[1px] border-black lg:mr-12'>
+            <div className='bg-white dark:bg-dark-card w-full max-w-lg flex flex-col mx-auto py-6 rounded-2xl border-[1px] border-black dark:border-dark-border lg:mr-12 shadow-lg dark:shadow-gray-900/50'>
                 <div className='h-fit mx-auto relative'>
 
                     <div className='my-2'>
                         <label className=' flex items-center justify-center flex-col'>
                             <img className={`${!data?.profilePic ? 'animate-bounce h-44 w-44' : 'h-32 w-32' } rounded-full object-cover`} src={data.profilePic || loginIcon} />
 
-                            <div className='bg-slate-50 p-1 shadow-lg text-center text-[13px] opacity-60 hover:opacity-90 cursor-pointer transition-all rounded-full'>
+                            <div className='bg-slate-50 dark:bg-dark-bg p-1 shadow-lg text-center text-[13px] text-gray-700 dark:text-gray-300 opacity-60 hover:opacity-90 cursor-pointer transition-all rounded-full'>
                                 {data?.profilePic ? ("Update Image") : ("Upload Image")}
                             </div>
                             <input type='file' className='hidden' onChange={(e)=>uploadHandler(e)}/>
@@ -95,11 +95,11 @@ export const Signup = () => {
                     </div>
                     
                 </div>
-                <form className='grid px-10 gap-2 text-lg' onSubmit={(event)=>submitHandler(event)}>
+                <form className='grid px-10 gap-2 text-lg text-gray-900 dark:text-white' onSubmit={(event)=>submitHandler(event)}>
                     <div>
-                        <label htmlFor='name'>Name:</label>
-                        <div className='flex border-2 px-4 py-2 border-gray-500'>
-                            <input className='w-full h-full bg-transparent outline-none placeholder:text-slate-600' 
+                        <label htmlFor='name' className='dark:text-gray-300'>Name:</label>
+                        <div className='flex border-2 px-4 py-2 border-gray-500 dark:border-dark-border bg-white dark:bg-dark-bg rounded'>
+                            <input className='w-full h-full bg-transparent outline-none placeholder:text-slate-600 dark:placeholder:text-gray-500 text-gray-900 dark:text-white' 
                             type='text' 
                             name='name' 
                             value={data.name}
@@ -110,9 +110,9 @@ export const Signup = () => {
                     </div>
 
                     <div>
-                        <label htmlFor='email'>Email:</label>
-                        <div className='flex border-2 px-4 py-2 border-gray-500'>
-                            <input className='w-full h-full bg-transparent outline-none placeholder:text-slate-600' 
+                        <label htmlFor='email' className='dark:text-gray-300'>Email:</label>
+                        <div className='flex border-2 px-4 py-2 border-gray-500 dark:border-dark-border bg-white dark:bg-dark-bg rounded'>
+                            <input className='w-full h-full bg-transparent outline-none placeholder:text-slate-600 dark:placeholder:text-gray-500 text-gray-900 dark:text-white' 
                             type='email' 
                             name='email' 
                             value={data.email}
@@ -123,16 +123,16 @@ export const Signup = () => {
                     </div>
                     
                     <div>
-                        <label htmlFor='password'>Password:</label>
-                        <div className='flex border-2 px-4 py-2 border-gray-500'>
-                            <input className='w-full h-full bg-transparent outline-none placeholder:text-slate-600' 
+                        <label htmlFor='password' className='dark:text-gray-300'>Password:</label>
+                        <div className='flex border-2 px-4 py-2 border-gray-500 dark:border-dark-border bg-white dark:bg-dark-bg rounded'>
+                            <input className='w-full h-full bg-transparent outline-none placeholder:text-slate-600 dark:placeholder:text-gray-500 text-gray-900 dark:text-white' 
                                 type={showPassword?"text":"password"} 
                                 name='password' 
                                 value={data.password}
                                 required
                                 placeholder='Enter Your Password'
                                 onChange={(event)=>changeHandler(event)}/>
-                            <span className='text-xl cursor-pointer' onClick={()=>setshowPassword(!showPassword)}>
+                            <span className='text-xl cursor-pointer dark:text-gray-300' onClick={()=>setshowPassword(!showPassword)}>
                                 {
                                     showPassword?(<FaEyeSlash/>):(<FaEye/>)
                                 }
@@ -141,16 +141,16 @@ export const Signup = () => {
                     </div>
 
                     <div>
-                        <label htmlFor='confirmPassword'>Confirm Password:</label>
-                        <div className='flex border-2 px-4 py-2 border-gray-500'>
-                            <input className='w-full h-full bg-transparent outline-none placeholder:text-slate-600' 
+                        <label htmlFor='confirmPassword' className='dark:text-gray-300'>Confirm Password:</label>
+                        <div className='flex border-2 px-4 py-2 border-gray-500 dark:border-dark-border bg-white dark:bg-dark-bg rounded'>
+                            <input className='w-full h-full bg-transparent outline-none placeholder:text-slate-600 dark:placeholder:text-gray-500 text-gray-900 dark:text-white' 
                                 type={showConfirmPassword?"text":"password"} 
                                 name='confirmPassword' 
                                 value={data.confirmPassword}
                                 required
                                 placeholder='Confirm Your Password'
                                 onChange={(event)=>changeHandler(event)}/>
-                            <span className='text-xl cursor-pointer' onClick={()=>setShowConfirmPassword(!showConfirmPassword)}>
+                            <span className='text-xl cursor-pointer dark:text-gray-300' onClick={()=>setShowConfirmPassword(!showConfirmPassword)}>
                                 {
                                     showConfirmPassword?(<FaEyeSlash/>):(<FaEye/>)
                                 }
@@ -158,10 +158,11 @@ export const Signup = () => {
                         </div>
                     </div>
                     
-                    <button className='px-4 py-2 rounded-xl bg-red-400 hover:bg-red-500 transition-all duration-100 text-lg text-bold'>SignUp</button>
+                    <button className='px-4 py-2 rounded-xl bg-red-400 hover:bg-red-500 dark:bg-primary-500 dark:hover:bg-primary-600 transition-all duration-100 text-lg text-bold text-white'>SignUp</button>
                 </form>
-                <p className='text-sm px-10'>Already have account ? <Link to="/login" className='hover:underline text-red-500 hover:text-red-600'>Login</Link></p>
+                <p className='text-sm px-10 dark:text-gray-400'>Already have account ? <Link to="/login" className='hover:underline text-red-500 dark:text-primary-400 hover:text-red-600 dark:hover:text-primary-500'>Login</Link></p>
             </div>
     </section>
   )
 }
+

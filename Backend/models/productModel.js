@@ -11,5 +11,12 @@ const productSchema = new mongoose.Schema({
 },{
     timestamps:true
 })
+
+// Add indexes for faster queries
+productSchema.index({ category: 1 })
+productSchema.index({ productName: 'text', category: 'text' })
+productSchema.index({ createdAt: -1 })
+productSchema.index({ brandName: 1 })
+
 const productModel = mongoose.model("product",productSchema)
 module.exports = productModel

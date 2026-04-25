@@ -79,17 +79,17 @@ export const AdminEditProduct = ({onclose,productData,fetchAllProduct}) => {
   }
 
   return (
-    <div className='fixed h-full w-full top-0 bottom-0 right-0 left-0 flex justify-center items-center bg-opacity-45 bg-slate-200' onClick={onclose}>
-        <div className='overflow-y-hidden bg-white p-4 rounded w-full max-w-2xl h-full max-h-[80%] shadow-lg' onClick={(e)=>e.stopPropagation()}>
+    <div className='fixed h-full w-full top-0 bottom-0 right-0 left-0 flex justify-center items-center bg-opacity-45 bg-slate-200 dark:bg-black dark:bg-opacity-60' onClick={onclose}>
+        <div className='overflow-y-hidden bg-white dark:bg-dark-card p-4 rounded w-full max-w-2xl h-full max-h-[80%] shadow-lg dark:shadow-gray-900/50' onClick={(e)=>e.stopPropagation()}>
             <div className='flex pb-4 justify-between items-center w-full'>
-                <h2 className='font-bold text-lg '>Edit Product</h2>
-                <div className='text-lg hover:scale-125 transition-all duration-100 cursor-pointer' onClick={onclose}>
+                <h2 className='font-bold text-lg dark:text-white'>Edit Product</h2>
+                <div className='text-lg hover:scale-125 transition-all duration-100 cursor-pointer dark:text-gray-300' onClick={onclose}>
                     <GrClose/>
                 </div>
             </div>
-            <form className='grid h-full p-4 gap-3 overflow-y-scroll pb-14'
+            <form className='grid h-full p-4 gap-3 overflow-y-scroll pb-14 text-gray-900 dark:text-white'
                 onSubmit={submitHandler}>
-                <label htmlFor='productName'>Product Name</label>
+                <label htmlFor='productName' className='dark:text-gray-300'>Product Name</label>
                 <input type='text' 
                 required
                 id="productName" 
@@ -97,7 +97,7 @@ export const AdminEditProduct = ({onclose,productData,fetchAllProduct}) => {
                 placeholder='Enter Product Name' 
                 value={data.productName}
                 onChange={changeHandler}
-                className='p-2 bg-slate-100 border rounded'/>
+                className='p-2 bg-slate-100 dark:bg-dark-bg border dark:border-dark-border rounded text-gray-900 dark:text-white'/>
 
                 <label htmlFor='brandName'>Brand Name</label>
                 <input type='text'
@@ -161,7 +161,7 @@ export const AdminEditProduct = ({onclose,productData,fetchAllProduct}) => {
                                     </div>
                                 ))
                             ):
-                            (<p className='text-sm text-blue-600 '>*Please Upload product image</p>)
+                            (<p className='text-sm text-primary-600 dark:text-primary-400 '>*Please Upload product image</p>)
                         }
                     </div>
                 </div>
@@ -195,7 +195,7 @@ export const AdminEditProduct = ({onclose,productData,fetchAllProduct}) => {
                     
                 </textarea>
                         
-                <button className='px-3 py-2 bg-blue-500 rounded text-white hover:bg-blue-700'>Update Product</button>
+                <button className='px-3 py-2 bg-blue-500 rounded text-white hover:bg-primary-700 dark:hover:bg-primary-600'>Update Product</button>
             </form>
         </div>
         {
@@ -208,3 +208,4 @@ export const AdminEditProduct = ({onclose,productData,fetchAllProduct}) => {
     </div>
   )
 }
+

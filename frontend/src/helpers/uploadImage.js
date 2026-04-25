@@ -11,3 +11,4 @@ export const uploadImage = async(image) => {
     })
     return apiresponse.json()
 }
+

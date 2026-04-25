@@ -1,6 +1,4 @@
 const mongoose = require('mongoose')
-const productModel = require('./productModel')
-const getProductDetails = require('../controllers/product/getProductDetails')
 
 const orderSchema = new mongoose.Schema({
     productDetails:{
@@ -35,5 +33,11 @@ const orderSchema = new mongoose.Schema({
 },{
     timestamps: true
 })
+
+// Add indexes for faster order queries
+orderSchema.index({ userid: 1, createdAt: -1 })
+orderSchema.index({ email: 1 })
+orderSchema.index({ 'paymentDetails.paymentId': 1 })
+
 const orderModel = mongoose.model('order',orderSchema)
 module.exports = orderModel

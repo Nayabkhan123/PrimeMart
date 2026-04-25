@@ -14,6 +14,9 @@ const userSchema = new mongoose.Schema({
     timestamps:true,
 })
 
+// Add index for role-based queries
+userSchema.index({ role: 1 })
+
 const userModel=mongoose.model("user",userSchema)
 
 module.exports = userModel 
