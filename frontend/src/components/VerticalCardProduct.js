@@ -51,7 +51,7 @@ const VerticalCardProduct = React.memo(({category, heading}) => {
                         <div key={index} className='w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] bg-white dark:bg-dark-card rounded-lg shadow-md dark:shadow-gray-900/50'>
                             <div className='bg-slate-200 dark:bg-dark-hover animate-pulse h-60 p-4 min-w-[120px] md:min-w-[145px] flex justify-center items-center rounded-t-lg'></div>
                             <div className='p-4 grid gap-2'>
-                                <h2 className='bg-slate-200 dark:bg-dark-hover p-2 animate-pulse w-full rounded-full'></h2>
+                                <h2 className='bg-slate-200 dark:bg-dark-hover p-2 animate-pulse w-full rounded-full'><span className="sr-only">Loading</span></h2>
                                 <p className='bg-slate-200 dark:bg-dark-hover p-2 animate-pulse w-full rounded-full'></p>
                                 <div className='flex gap-3'>
                                     <p className='bg-slate-200 dark:bg-dark-hover p-2 animate-pulse w-full rounded-full'></p>

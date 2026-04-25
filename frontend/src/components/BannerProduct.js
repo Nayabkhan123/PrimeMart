@@ -39,17 +39,18 @@ const BannerProduct = () => {
     }
     
     const prevImage = ()=>{
-        if(currentImage != 0)
+        if(currentImage !== 0)
             setCurrImage(currentImage-1)
         else setCurrImage(desktopImages.length-1);
     }
     useEffect(()=>{
         const interval = setInterval(()=>{
-            console.log(currentImage)
-                nextImage()
+            if(desktopImages.length-1 > currentImage )
+                setCurrImage(currentImage+1)
+            else setCurrImage(0);
         },5000)
         return ()=> clearInterval(interval)
-    },[currentImage])
+    },[currentImage, desktopImages.length])
   return (
     <div className='container mx-auto px-4 rounded overflow-hidden'>
         <div className='h-56 md:h-72 w-full bg-slate-200 dark:bg-dark-card relative rounded-lg shadow-md dark:shadow-gray-900/50'>
@@ -64,7 +65,7 @@ const BannerProduct = () => {
                         return (
                             <div className='w-full h-full min-w-full min-h-full transition-all' key={imageUrl}
                                 style={{transform:`translateX(-${currentImage*100}%)`}}>
-                                <img src={imageUrl} className='w-full h-full'/>
+                                <img src={imageUrl} alt={`Banner ${index + 1}`} className='w-full h-full'/>
                             </div>
                         )
                     })
@@ -77,7 +78,7 @@ const BannerProduct = () => {
                         return (
                             <div className='w-full h-full min-w-full min-h-full transition-all' key={imageUrl}
                                 style={{transform:`translateX(-${currentImage*100}%)`}}>
-                                <img src={imageUrl} className='w-full h-full object-cover'/>
+                                <img src={imageUrl} alt={`Mobile Banner ${index + 1}`} className='w-full h-full object-cover'/>
                             </div>
                         )
                     })

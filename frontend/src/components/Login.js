@@ -58,7 +58,7 @@ export const Login = () => {
     style={{ backgroundImage: window.innerWidth >= 1024 ? `url(${loginImage})` : "none" }}>
             <div className='bg-white dark:bg-dark-card lg:ml-12 border-black dark:border-dark-border border-[1px] py-12 w-full mx-auto max-w-lg flex flex-col rounded-2xl shadow-lg dark:shadow-gray-900/50'>
                 <div className='animate-bounce mx-auto'>
-                    <img className='rounded-full' src={loginIcon} width={150}/>
+                    <img className='rounded-full' src={loginIcon} alt="Login" width={150}/>
                 </div>
                 <form className='grid px-10 gap-2 text-lg text-gray-900 dark:text-white' onSubmit={(event)=>submitHandler(event)}>
                     <div>

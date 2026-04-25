@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import ROLE from '../common/role'
 import { GrClose } from "react-icons/gr";
 import SummaryApi from '../common';

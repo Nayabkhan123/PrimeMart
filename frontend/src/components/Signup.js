@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import loginIcon from '../assest/loginIcon.png'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
-import imageTobase64 from '../helpers/imageTobase64';
 import SummaryApi from '../common';
 import { toast } from 'react-toastify';
 import registerImage from '../assest/register.jpg'
@@ -85,7 +84,7 @@ export const Signup = () => {
 
                     <div className='my-2'>
                         <label className=' flex items-center justify-center flex-col'>
-                            <img className={`${!data?.profilePic ? 'animate-bounce h-44 w-44' : 'h-32 w-32' } rounded-full object-cover`} src={data.profilePic || loginIcon} />
+                            <img className={`${!data?.profilePic ? 'animate-bounce h-44 w-44' : 'h-32 w-32' } rounded-full object-cover`} src={data.profilePic || loginIcon} alt="Profile" />
 
                             <div className='bg-slate-50 dark:bg-dark-bg p-1 shadow-lg text-center text-[13px] text-gray-700 dark:text-gray-300 opacity-60 hover:opacity-90 cursor-pointer transition-all rounded-full'>
                                 {data?.profilePic ? ("Update Image") : ("Upload Image")}

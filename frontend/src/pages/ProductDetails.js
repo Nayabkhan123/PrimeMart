@@ -3,7 +3,6 @@ import {useNavigate, useParams} from 'react-router-dom'
 import SummaryApi from '../common'
 import { FaStar, FaStarHalf } from 'react-icons/fa'
 import displayINRCurrency from '../helpers/displayCurrency'
-import VerticalCardProduct from '../components/VerticalCardProduct'
 import CategoryWiseProductDisplay from '../components/CategoryWiseProductDisplay'
 import addToCart from '../helpers/addToCart'
 import Context from '../context'
@@ -55,7 +54,7 @@ const ProductDetails = () => {
   
   useEffect(()=>{
     fetchProductDetails()
-  },[params])
+  },[params?.id])
   
   const handleMouseHover = (imageUrl)=>{
     setActiveImage(imageUrl)
@@ -93,7 +92,7 @@ const ProductDetails = () => {
           <div className='sticky top-24 flex flex-col gap-4'>
             <div className='h-96 flex gap-3 flex-col lg:flex-row-reverse'>
               <div className='h-[300px] w-full bg-slate-100 dark:bg-dark-hover border-2 dark:border-dark-border lg:h-96 lg:w-96 relative rounded-lg' >
-                <img src={activeImage} className='h-full w-full p-3 object-scale-down mix-blend-multiply dark:mix-blend-normal cursor-pointer' onMouseMove={(e)=>handleZoomImage(e)} onMouseLeave={handleZoomOutImage}/>
+                <img src={activeImage} alt="Product" className='h-full w-full p-3 object-scale-down mix-blend-multiply dark:mix-blend-normal cursor-pointer' onMouseMove={(e)=>handleZoomImage(e)} onMouseLeave={handleZoomOutImage}/>
                 {
                   zoomImage && (
                     <div className='hidden lg:block absolute min-w-[500px] min-h-[500px] z-40 bg-slate-200 dark:bg-dark-card p-1 -right-[520px] top-0 overflow-hidden rounded-lg border dark:border-dark-border' >
@@ -129,7 +128,7 @@ const ProductDetails = () => {
                         data?.productImage?.map((image,index)=>{
                           return(
                             <div className='min-h-24 max-h-24 lg:max-h-24 min-w-20 max-w-20 lg:max-w-20 bg-slate-100 dark:bg-dark-hover border-2 dark:border-dark-border rounded' key={index}>
-                              <img onMouseEnter={()=>handleMouseHover(image)} src={image} className='w-full h-full object-scale-down mix-blend-multiply dark:mix-blend-normal'/>
+                              <img onMouseEnter={()=>handleMouseHover(image)} src={image} alt={`Product ${index + 1}`} className='w-full h-full object-scale-down mix-blend-multiply dark:mix-blend-normal'/>
                             </div>
                           )
                         })
@@ -146,8 +145,8 @@ const ProductDetails = () => {
         {
           loading? (
             <div className='flex flex-col gap-5 w-full lg:w-1/2'>
-              <p className='bg-slate-200 dark:bg-dark-hover h-6 w-full animate-pulse px-2 rounded-full inline-block'></p>
-              <h2 className='h-6 w-full bg-slate-200 dark:bg-dark-hover animate-pulse px-2'></h2>
+              <p className='bg-slate-200 dark:bg-dark-hover h-6 w-full animate-pulse px-2 rounded-full inline-block'><span className="sr-only">Loading</span></p>
+              <h2 className='h-6 w-full bg-slate-200 dark:bg-dark-hover animate-pulse px-2'><span className="sr-only">Loading</span></h2>
               <p className='h-6 w-full bg-slate-200 dark:bg-dark-hover animate-pulse px-2'></p>
               <div className='flex gap-1 w-full'>
                 <p className='bg-slate-200 dark:bg-dark-hover h-6 w-6 animate-pulse'></p>

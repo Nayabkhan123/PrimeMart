@@ -1,16 +1,13 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import fetchCategoryWiseProduct from '../helpers/fetchCategoryWiseProduct'
 import displayINRCurrency from '../helpers/displayCurrency'
-import { FaAngleLeft, FaAngleRight } from 'react-icons/fa'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import addToCart from '../helpers/addToCart'
 import Context from '../context'
 import scrollTop from '../helpers/scrollTop'
-import VerticalProduct from './VerticalProduct'
 
 const CategoryWiseProductDisplay = ({category,heading}) => {
     const [data,setData]=useState([])
-    const navigate = useNavigate()
     const [loading,setLoading] = useState(true)
     const loadingList = new Array(13).fill(null)
 
@@ -29,7 +26,7 @@ const CategoryWiseProductDisplay = ({category,heading}) => {
     }
     useEffect(()=>{
         fetchData()
-    },[])
+    },[category])
 
     
   return (
@@ -68,6 +65,7 @@ const CategoryWiseProductDisplay = ({category,heading}) => {
                                     className='w-full bg-white dark:bg-dark-card rounded-sm shadow-md dark:shadow-gray-900/50 border dark:border-dark-border hover:shadow-lg dark:hover:shadow-gray-900/70 transition-all'>
                                 <div className='bg-slate-100 dark:bg-dark-bg shadow-sm h-44 p-3 flex justify-center items-center'>
                                     <img src={product?.productImage[0]} 
+                                        alt={product?.productName}
                                         className='object-scale-down h-32 hover:scale-110 transition-all mix-blend-multiply dark:mix-blend-normal'/>
                                 </div>
                                 <div className='p-3 grid gap-2'>

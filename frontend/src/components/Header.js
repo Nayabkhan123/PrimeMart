@@ -72,8 +72,8 @@ export const Header = () => {
       <div className='flex items-center justify-between w-11/12 md:w-5/6 mx-auto'>
         <div className={`${searchActive ? "hidden" : "flex items-center"} `}>
           <Link className='flex items-center h-12 group' to="/">
-            <img src={logo} className='h-8 md:h-10 group-hover:scale-105 transition-transform duration-200'/>
-            <img src={logo2} className='h-8 md:h-9 group-hover:scale-105 transition-transform duration-200 dark:invert'/>
+            <img src={logo} alt="Prime Mart Logo" className='h-8 md:h-10 group-hover:scale-105 transition-transform duration-200'/>
+            <img src={logo2} alt="Prime Mart" className='h-8 md:h-9 group-hover:scale-105 transition-transform duration-200 dark:invert'/>
           </Link>
         </div>
         
@@ -129,7 +129,7 @@ export const Header = () => {
               <div className='text-2xl cursor-pointer hover:scale-110 transition-transform duration-200 dark:text-white'>
               {
                 user?.profilePic?(
-                  <img className='h-8 w-8 rounded-full ring-2 ring-primary-500 dark:ring-primary-400' src={user?.profilePic}/>)
+                  <img className='h-8 w-8 rounded-full ring-2 ring-primary-500 dark:ring-primary-400' src={user?.profilePic} alt="User Profile"/>)
                   :
                   (<FaUserAstronaut/>)
               }
